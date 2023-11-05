@@ -39,6 +39,7 @@ void loop()
   if(sliderValue127 != oldMidiValue)
   {
     controlChange(1, 1, sliderValue127);
+    oldMidiValue = sliderValue127;
   }
 }
 
