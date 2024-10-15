@@ -1,34 +1,36 @@
 # anything2midi
 
-Radionica izrade MIDI kontrolera, održano 4. i 5. 11. u klubu MaM+a u Zagrebu.
+Code files for a workshop for building a MIDI controller, held on November 4th and 5th at MaM+a club in Zagreb.
 
-## Linkovi
+## Links
 
-Board Definitioni: https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/package_Dasduino_Boards_index.json
+Board Definitions: [Dasduino Board Definitions for Arduino IDE](https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/package_Dasduino_Boards_index.json)
 
-Loopmidi: https://www.tobias-erichsen.de/software/loopmidi.html
+LoopMIDI: [LoopMIDI by Tobias Erichsen](https://www.tobias-erichsen.de/software/loopmidi.html)
 
-Hairless Midi: https://projectgus.github.io/hairless-midiserial/
+Hairless MIDI: [Hairless MIDI Serial Bridge](https://projectgus.github.io/hairless-midiserial/)
 
-SurgeXT: https://surge-synthesizer.github.io/
+Surge XT: [Surge Synthesizer](https://surge-synthesizer.github.io/)
 
-## Tutorial za slanje MIDI nota
+## Tutorial for Sending MIDI Notes
 
-1. Spoji Arduino/Dasduino putem USB-a na komp
+1. Connect the Arduino/Dasduino via USB to your computer.
 
-2. Instaliraj RBD Button i RBD timer biblioteke i otvori example 2 iz ovog repozitorija u Arduino IDEu
+2. Install the RBD Button and RBD Timer libraries, then open example 2 from this repository in the Arduino IDE.
 
-3. Uploadaj example na pločicu, ako je User tipka na nekom drugom pinu, promjeni '0' iz linije 6 u broj tog pina
+3. Upload the example to the board. If the User button is on a different pin, change '0' in line 6 to the number of the corresponding pin.
 
-4. Upali programe Hairless MIDI i Loopmidi, na loopmidiju napravi novi port i spoji na hairless MIDIju da Serial od Arduina ide na taj port
+4. Launch Hairless MIDI and LoopMIDI. In LoopMIDI, create a new port and connect it in Hairless MIDI so that the Arduino Serial sends to this port.
 
-5. Otvori Surge XT i u opcijama upali taj virtualni midi port koji je napraivo loopmidi
+5. Open Surge XT and enable this virtual MIDI port in the options, the one created by LoopMIDI.
 
-6. Probaj stisnuti tipku i svirati
+6. Try pressing the button to play.
 
-## Za Linux (tnx j3d1n4)
+## For Linux (Thanks to j3d1n4)
 
-https://wiki.archlinux.org/title/Udev#Loading_new_rules
-umjesto hairless midi i loopMIDI:
+Instead of Hairless MIDI and LoopMIDI, use:
+[Arch Linux Udev Loading New Rules Guide](https://wiki.archlinux.org/title/Udev#Loading_new_rules)
+```bash
 ttymidi | timidity -iA
-(dići timidity kao "ALSA server mode" za surge-xt)
+```
+(Start Timidity in "ALSA server mode" for Surge XT)
